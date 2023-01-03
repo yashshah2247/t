@@ -1,4 +1,4 @@
-<aura:component controller="sendmail" implements ="force:lightningQuickAction">
+<aura:component controller="test_email" implements ="force:lightningQuickAction,force:hasRecordId">
     <aura:attribute name="subject" type="String" />
     <aura:attribute name="body" type="String" />
     <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
@@ -16,13 +16,13 @@
                   targetFields="{!v.record}"
                   recordUpdated="{!c.recordUpdate}" /> -->
     <!-- <p>{!v.recordId}frdgikudh</p> -->
-    <lightning:input name="subject" aura:id ="subject" onchange="{!c.searchKeyChange}" label="subject :-"></lightning:input>
+    <lightning:input name="subject" aura:id ="subject"  label="subject :-"></lightning:input>
     <lightning:input name="body" aura:id ="body" label="msg :-"></lightning:input>
     <lightning:fileUpload label="Attach receipt"
+        aura:id ="file"
         name="fileUploader"
-        multiple="true"
         accept="{!v.filetype}"
-        recordId="{!v.recordId}"
-        onuploadfinished="{!c.handleUploadFinished}" />
+        recordId="{!v.recordId}"/>
+    <lightning:input type="button" value="submit" label="submit" onclick="{!c.searchKeyChange}"></lightning:input>
     
 </aura:component>

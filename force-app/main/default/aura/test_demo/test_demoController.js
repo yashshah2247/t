@@ -1,8 +1,11 @@
 ({
     sendMail : function(component, event, helper) {
+        
         var action = component.get("c.sendMailWithPDF");
         var emailSubject = component.get("v.subject");
         var emailBody = component.get("v.body");
+        var rId = component.get('v.recordId');
+        alert('hiii' + rId);
         action.setParams({
             'recordId' : component.get('v.recordId'),
             "subject" : emailSubject,

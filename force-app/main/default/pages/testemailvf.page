@@ -1,0 +1,5 @@
+<apex:page Controller="DemoSendEmailWithAttachment">
+    <apex:form>
+         <apex:commandButton value="Send Email With Attachment" action="{!SendEmailWithAttachment}"/>
+     </apex:form>
+</apex:page>
