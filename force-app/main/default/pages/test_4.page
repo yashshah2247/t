@@ -1,0 +1,23 @@
+<apex:page controller="test_r_c">
+    <apex:pageBlock >
+        <table>
+            <apex:repeat value="{!recot }" var="n_l">
+                <tr>
+                    <td>
+                        <apex:outputText value="{!n_l.Name}"/>
+                    </td>
+                    <td>
+                        <apex:outputText value="{!n_l.ID}"/>
+                    </td>
+                    <apex:repeat value="{!n_l.Contacts}" var="con">
+                        <td>
+                            <apex:outputText value="{!con.Name}"/>
+                        </td>
+                    </apex:repeat>
+                    
+                </tr>
+            </apex:repeat>
+
+        </table>
+    </apex:pageBlock>
+   </apex:page>

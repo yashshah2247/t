@@ -1,0 +1,21 @@
+<apex:page controller="contactSearchControllerl">
+    <apex:form >
+    <!-- <apex:pageBlock > -->
+        <apex:inputText label="Enter the ContactName" value="{!conLastName}" onchange="{!handleChnage}"/>
+        <table>
+            <tr>
+                <th>Name</th>
+            </tr>
+            <apex:repeat value="{!records }" var="con">
+            <!-- <template for:each={records} for:item="con"> -->
+                <tr key="{!con.Id}">
+                    <td>
+                        <apex:outputText value="{!con.LastName}"/>
+                    </td>
+                </tr>
+            </apex:repeat>
+            <!-- </template> -->
+        </table>
+    <!-- </apex:pageBlock> -->
+</apex:from>
+</apex:page>

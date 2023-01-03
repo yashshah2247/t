@@ -1,0 +1,69 @@
+<apex:page controller="DynamicSearchWithTabel" sidebar="false">
+    <apex:form>
+        <apex:pageBlock title="Contacts List"  id="criteria">
+
+            <script type="text/javascript">
+                function doSearch() {
+                    searchServer(document.getElementById("firstName").value,);
+                }
+            </script>
+            <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="test,debug,errors">
+                <apex:param name="firstName" value="" />
+            </apex:actionFunction>
+            <apex:outputLabel value="Name" />
+            <input type="text" id="firstName" onkeyup="doSearch();" />
+                        <apex:pageBlock mode="edit" id="test">
+                            <apex:pageBlockTable value="{!contacts}" var="contact" id="pt"> 
+                                Total Records Found:
+                                <apex:column > 
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="First Name" rerender="test,debug">
+                                        </apex:commandLink>
+                                    </apex:facet> 
+                                    <apex:outputField value="{!contact.firstName}" /> 
+                                </apex:column>
+                                <apex:column > 
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Last Name" rerender="test,debug">
+                                        </apex:commandLink>
+                                    </apex:facet> 
+                                    <apex:outputField value="{!contact.lastname}" /> 
+                                </apex:column>
+                                <apex:column > 
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Email" rerender="test,debug">
+                                        </apex:commandLink>
+                                    </apex:facet> 
+                                    <apex:outputField value="{!contact.Email}" /> 
+                                </apex:column>
+                                <apex:column > 
+                                    <apex:facet name="header">
+                                        <apex:commandLink value="Phone" rerender="test,debug">
+                                        </apex:commandLink>
+                                    </apex:facet> 
+                                    <apex:outputField value="{!contact.Phone}" /> 
+                                </apex:column>
+                            </apex:pageBlockTable>
+                        </apex:pageBlock>
+
+                        <apex:pageBlock>
+                            <apex:outputText value="Total Number Of Recoad {!countTotalRecords}"/>
+                            <apex:commandButton value="First" action="{!fstbtn}" disabled="{!prv}"/>
+                            <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}"/>
+                            <apex:outputText value="{!png}"/>
+                            <apex:outputText value="/"/>
+                            <apex:outputText value="{!png_1}"/> 
+                            <!-- <apex:outputText value="{!countTotalRecords}"/>  
+                            <apex:outputText value="{!countTotalRecords}"/>    -->
+                            <apex:commandButton value="Next" action="{!nextbtn}" disabled="{!nxt}"/>
+                            <apex:commandButton value="End" action="{!endbtn}" disabled="{!nxt}"/>
+                            <apex:outputText value="Page Number : "/>
+                            <apex:outputText value="{!c_pn}"/>
+                            <apex:outputText value="/"/>
+                            <apex:outputText value="{!i}"/>
+                            <apex:outputText value="/"/>
+                            <apex:outputText value="{!d}"/>
+                        </apex:pageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,25 @@
+<apex:page controller="test_r_c">
+    <apex:pageBlock >
+        <table>
+            <apex:repeat value="{!recot }" var="n_l">
+                <tr>
+                    <td>
+                        <apex:outputText value="{!n_l.Name}"/>
+                    </td>
+                    <td>
+                        <apex:outputText value="{!n_l.ID}"/>
+                    </td>
+                </tr>
+                <tr>
+                <apex:repeat value="{!recodes}" var="roc" >
+                        <td>
+                            <apex:outputText value="{!roc.Name}" rendered="{!n_l.ID == roc.AccountId }"/>
+                        </td>
+                    </apex:repeat>
+                </tr>
+                
+            </apex:repeat>
+
+        </table>
+    </apex:pageBlock>
+   </apex:page>

@@ -1,0 +1,57 @@
+<apex:page controller="testtesttask4" sidebar="false">
+    <apex:form>
+        <apex:pageBlock title="Contacts List" mode="edit">
+            <apex:pageBlock title="Search Contact Name" mode="edit" id="criteria">
+                <script type="text/javascript">
+                    function doSearch() {
+                        searchServer(document.getElementById("firstName").value,);
+                    }
+                </script>
+                <apex:actionFunction name="searchServer" action="{!runSearch}" rerender="results,debug,errors">
+                    <apex:param name="firstName" value="" />
+                </apex:actionFunction>
+                        <h2>&nbsp; &nbsp;First Name &nbsp;&nbsp;
+                            <input type="text" id="firstName" placeholder="FirstName" onkeyup="doSearch();" />
+                        </h2>
+            </apex:pageBlock>
+            <apex:pageBlock mode="edit" id="results">
+                <apex:pageBlockTable value="{!contacts}" var="contact">
+                    Total Records Found:
+                    <apex:column>
+                        <apex:facet name="header">
+                            <apex:commandLink value="First Name" rerender="results,debug" />
+                        </apex:facet>
+                        <apex:outputField value="{!contact.firstName}" />
+                    </apex:column>
+                    <apex:column>
+                        <apex:facet name="header">
+                            <apex:commandLink value="Last Name" rerender="results,debug" />
+                        </apex:facet>
+                        <apex:outputField value="{!contact.lastName}" />
+                    </apex:column>
+                    <apex:column>
+                        <apex:facet name="header">
+                            <apex:commandLink value="Email" rerender="results,debug" />
+                        </apex:facet>
+                        <apex:outputField value="{!contact.email}" />
+                    </apex:column>
+                    
+                    <apex:column>
+                        <apex:facet name="header">
+                            <apex:commandLink value="Phone" rerender="results,debug" />
+                        </apex:facet>
+                        <apex:outputField value="{!contact.phone}" />
+                    </apex:column>
+                </apex:pageBlockTable>
+                <apex:commandButton value="Previous" action="{!prv}" disabled="{!prv}" />
+                <apex:outputLabel value="{!firstvalue}"/>
+                <apex:outputLabel value=" - "/>
+                <apex:outputLabel value="{!lastvalue}" />
+                <apex:commandButton value="Next" action="{!next}" disabled="{!nxt}" />
+                <apex:outputLabel value="{!currentpage}"/>
+                <apex:outputLabel value=" / "/>
+                <apex:outputLabel value="{!Lastpage}"/>
+            </apex:pageBlock>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

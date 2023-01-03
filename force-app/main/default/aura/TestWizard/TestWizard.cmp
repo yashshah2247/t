@@ -1,0 +1,86 @@
+<aura:component controller="Wizard">
+    <aura:attribute name="steps" type="String" default="1"  />
+    <aura:attribute name="start" type="String" default="1"  />
+    <aura:attribute name="ac_name" type="String" />
+    <aura:attribute name="masg" type="String" />
+    <aura:attribute name="ac_lname" type="String" />
+    <aura:attribute name="ac_fname" type="String" />
+    <aura:attribute name="ac_phone" type="String" />
+    <aura:attribute name="ac_email" type="String" />
+    <aura:attribute name="con_name" type="String" />
+    <aura:attribute name="con_lname" type="String" />
+    <aura:attribute name="con_fname" type="String" />
+    <aura:attribute name="con_phone" type="String" />
+    <aura:attribute name="con_email" type="String" />
+    <aura:attribute name="location" type="String" />
+    <aura:attribute name="s_date" type="String" />
+    <aura:attribute name="e_date" type="String" />
+    <aura:attribute name="subject" type="String" default="Wizard Tas" />
+
+    <div class="one">
+        <lightning:progressIndicator currentStep="{!v.steps}" hasError="false">
+            <lightning:progressStep label="Basic Info" value="1" />
+            <lightning:progressStep label="Education" value="2" />
+            <lightning:progressStep label="Experience" value="3" />
+            <lightning:progressStep label="Completed" value="4" />
+        </lightning:progressIndicator>
+        <h1>{!v.masg}</h1>
+    </div>
+    <div>
+        <lightning:tabset selectedTabId="{!v.steps}" >
+            <lightning:tab label="Account Info " id="1">
+                <lightning:input label="Last Name :-" name="ac_lname" aura:id="ac_lname" required="ac_lname" />
+                <lightning:input label="First First :-" name="ac_fname" aura:id="ac_fname" />
+                <lightning:input label="Account Phone :-" name="ac_phone" aura:id="ac_phone" />
+                <lightning:input label="Account Email :-" name="ac_email" aura:id="ac_email" />
+                <lightning:button label="Next" onclick="{!c.show}" />
+            </lightning:tab>
+            <lightning:tab label="Contact Info" id="2">
+                <lightning:input label="Last Name :-" name="con_lname" aura:id="con_lname" />
+                <lightning:input label="First First :-" name="con_fname" aura:id="con_fname" />
+                <lightning:input label="Contact Phone :-" name="con_phone" aura:id="con_phone" />
+                <lightning:input label="Contact Email :-" name="con_email" aura:id="con_email" />
+                <lightning:button label="Previous" onclick="{!c.call}" />
+                <lightning:button label="Next" onclick="{!c.show}" />
+            </lightning:tab>
+            <lightning:tab label="Event Info " id="3">
+                <lightning:input label="Location :-" name="location" aura:id="location" />
+                <lightning:input label="Start Date :-" type="Date" name="s_date" aura:id="s_date" />
+                <lightning:input label="End Date :-" type="Date" name="e_date" aura:id="e_date" />
+                <lightning:button label="Previous" onclick="{!c.call}" />
+                <lightning:button label="Next" onclick="{!c.show}" />
+            </lightning:tab>
+            <lightning:tab label="Event Info " id="4">
+                <h1>Account Info</h1>
+                <br/>
+                <label>ACC Name :- {!v.ac_name}</label>
+                <br/>
+                <label>ACC Email :- {!v.ac_email}</label>
+                <br/>
+                <label>ACC Phone :- {!v.ac_phone}</label>
+                <br/>
+                <br/>
+                <h1>Contect Info</h1>
+                <br/>
+                <label>Con Name :- {!v.con_name}</label>
+                <br/>
+                <label>Con Email :- {!v.con_email}</label>
+                <br/>
+                <label>Con Phone :- {!v.con_phone}</label>
+                <br/><br/>
+                <h1>Event Info</h1>
+                <br/>
+                <label>Location :- {!v.location}</label>
+                <br/>
+                <label>Start Date :- {!v.s_date}</label>
+                <br/>
+                <label>End Date :- {!v.e_date}</label>
+                <br/>
+                <br/>
+                <lightning:button label="Previous" disabled="{!v.start == 0}" onclick="{!c.call}" />
+                <lightning:button label="Submit" onclick="{!c.invoke}" />
+            </lightning:tab>
+        </lightning:tabset>
+    </div>
+
+</aura:component>	

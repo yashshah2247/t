@@ -1,0 +1,41 @@
+<aura:component controller="ShowCaseStatussController">
+    <aura:attribute name="caseWrapper" type="ShowCaseStatussController.CaseWrapper" />
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <lightning:card>
+        <lightning:layout>
+            <lightning:layoutItem size="4" padding="around-small">
+                <div class="slds-box" ondragover="{!c.allDrop}" ondrop="{!c.onNewDrop}">
+                    <h1 style="font-size:30px;text-align:center"><b>New</b></h1>
+                    <aura:iteration items="{!v.caseWrapper.newCases}" var="newCases" >
+                        <div class="slds-box" ondragstart="{!c.dragstart}" draggable="true" id="{!newCases.Id}">
+                            Case Number:- {!newCases.CaseNumber}<br/>
+                            Subject:- {!newCases.Subject}<br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" padding="around-small">
+                <div class="slds-box" ondragover="{!c.allDrop}" ondrop="{!c.onWorkingDrop}">
+                    <h1 style="font-size:30px;text-align:center"><b>working</b></h1>
+                    <aura:iteration items="{!v.caseWrapper.workingCases}" var="workingCases">
+                        <div class="slds-box" ondragstart="{!c.dragstart}" draggable="true" id="{!workingCases.Id}">
+                            Case Number:- {!workingCases.CaseNumber}<br/>
+                            Subject:- {!workingCases.Subject}<br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" padding="around-small">
+                <div class="slds-box" ondragover="{!c.allDrop}" ondrop="{!c.onClosedDrop}">
+                    <h1 style="font-size:30px;text-align:center"><b>Closed</b></h1>
+                    <aura:iteration items="{!v.caseWrapper.closedCases}" var="closedCases">
+                        <div class="slds-box" ondragstart="{!c.dragstart}" draggable="true" id="{!closedCases.Id}">
+                            Case Number:- {!closedCases.CaseNumber}<br/>
+                            Subject:- {!closedCases.Subject}<br/>
+                        </div>
+                    </aura:iteration>
+                </div>
+            </lightning:layoutItem>
+        </lightning:layout>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,28 @@
+<aura:component controller="sendmail" implements ="force:lightningQuickAction">
+    <aura:attribute name="subject" type="String" />
+    <aura:attribute name="body" type="String" />
+    <aura:attribute name="filetype" type="List" default="['.png', '.jpg', '.jpeg']" />
+    <aura:attribute name="multiple" type="Boolean" default="true" />
+    <aura:attribute name="disabled" type="Boolean" default="true" />
+    <!-- <aura:attribute name="recordId" type="String" /> -->
+    <aura:attribute name="record" type="sObject" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+       <div id="demo">
+        Hello World!
+        <!-- Account Id is {!v.recordId} -->
+    </div>
+    <!-- <force:recordData layoutType="FULL"
+                  recordId="{!v.recordId}"
+                  targetFields="{!v.record}"
+                  recordUpdated="{!c.recordUpdate}" /> -->
+    <!-- <p>{!v.recordId}frdgikudh</p> -->
+    <lightning:input name="subject" aura:id ="subject" onchange="{!c.searchKeyChange}" label="subject :-"></lightning:input>
+    <lightning:input name="body" aura:id ="body" label="msg :-"></lightning:input>
+    <lightning:fileUpload label="Attach receipt"
+        name="fileUploader"
+        multiple="true"
+        accept="{!v.filetype}"
+        recordId="{!v.recordId}"
+        onuploadfinished="{!c.handleUploadFinished}" />
+    
+</aura:component>

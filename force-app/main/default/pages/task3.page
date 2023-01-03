@@ -1,0 +1,63 @@
+<apex:page controller="accountcontact1">
+    <pageBlockTable>
+        <apex:repeat value="{!accounts}" var="accWrap">
+            <apex:repeat value="{!accWrap.accounts}" var="acc">
+                <apex:pageBlock title="Account Name : {!acc.Name}">
+                <!-- <apex:repeat > -->
+                    <apex:pageBlockTable title="Contact List" value="{!acc.contacts}" var="cont">
+                        <apex:outputText>Contact List</apex:outputText>
+                        Contact List :
+                            <apex:column>
+                                <apex:facet name="header">Name</apex:facet>
+                                <apex:outputText value="{!cont.Name}"/>
+                                <!-- <apex:outputText value="Name : {!cont.Name}" /> -->
+                            </apex:column>
+                            <apex:column>
+                                <apex:facet name="header">Email</apex:facet>
+                                <apex:outputText value="{!cont.Email}"/>
+                                <!-- <apex:outputText value="Email : {!cont.Email}" /> -->
+                            </apex:column>
+                            <apex:column>
+                                <apex:facet name="header">Phone</apex:facet>
+                                <apex:outputText value="{!cont.Phone}"/>
+                                <!-- <apex:outputText value="Phone : {!cont.Phone}" /> -->
+                            </apex:column>
+                        </apex:pageBlockTable>
+                <!-- </apex:repeat> -->
+               </apex:pageBlock>
+            </apex:repeat>
+        </apex:repeat>
+    </pageBlockTable>
+</apex:page>
+
+<!-- <apex:page controller="accountcontact1">
+    <table>
+        <apex:repeat value="{!accounts}" var="accWrap">
+            <apex:repeat value="{!accWrap.accounts}" var="acc">
+                <tr>
+                    <td>
+                        <apex:outputText value="Account : {!acc.Name}" />
+                    </td>
+                </tr>
+                <apex:repeat value="{!acc.contacts}" var="cont">
+                    <tr>
+                        <td>
+                            <apex:outputText value="Contact : {!cont.Name}" />
+                        </td>
+                        <td>
+                            <apex:outputText value="Email : {!cont.Email}" />
+                        </td>
+                        <td>
+                            <apex:outputText value="Phone : {!cont.Phone}" />
+                        </td>
+                    </tr>
+                </apex:repeat>
+                <tr>
+                    <td>
+                        <hr/>
+                    </td>
+                </tr>
+            </apex:repeat>
+        </apex:repeat>
+    </table>
+</apex:page> -->

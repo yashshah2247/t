@@ -1,0 +1,14 @@
+<apex:page controller="SoqlPaginationOffsetController">
+    <apex:form >
+    	<apex:pageBlock id="pb" title="Contacts">
+            <apex:pageBlockTable value="{!Contacts}" var="c" id="pt">
+            	<apex:column value="{!c.Name}" />
+                <apex:column value="{!c.Phone}" />
+            </apex:pageBlockTable>
+            <apex:commandButton value="First" action="{!fstbtn}" disabled="{!prv}" reRender="pt,pb" />
+            <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="pt,pb" />
+            <apex:commandButton value="Next" action="{!nextbtn}" disabled="{!nxt}" reRender="pt,pb" />
+            <apex:commandButton value="End" action="{!endbtn}" disabled="{!nxt}" reRender="pt,pb" />
+        </apex:pageBlock>
+	</apex:form>
+</apex:page>

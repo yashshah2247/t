@@ -1,0 +1,31 @@
+<aura:component controller="LightningCtrl" implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="rec" type="Account[]" /> 
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" /> 
+    <aura:handler event="c:searchKeyChange" action="{!c.searchKeyChange}" />    
+    <div class="slds">
+    <table class="slds-table slds-table--bordered slds-table--striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Account ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.rec}" var="curr">
+                <tr>
+                    <td>{!curr.Name}</td>
+                    <td>{!curr.Email}</td>
+                    <td>{!curr.Phone}</td>
+                    <td>{!curr.AccountId}</td>
+                </tr>
+            
+            </aura:iteration>
+            
+        </tbody>
+    </table>
+    </div>
+
+
+</aura:component>	

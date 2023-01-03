@@ -1,0 +1,67 @@
+<aura:component controller="OpportunityController_AC" implements="force:appHostable,flexipage:availableForAllPageTypes">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}" />
+    <aura:attribute name="opportunityList" type="Opportunity[]" />
+    <aura:attribute name="paginationList" type="Opportunity[]" />
+    <aura:attribute name="testp" type="Opportunity[]" />
+    <aura:attribute name="pageSize" type="Integer" default="10" />
+    <aura:attribute name="totalSize" type="Integer"/>
+    <aura:attribute name="start" type="Integer" />
+    <aura:attribute name="end" type="Integer" />
+    <aura:attribute name="c_page" type="Integer" default="0" />
+    <aura:attribute name="total_page" type="Integer" default="10" />
+    <aura:attribute name="accname" type="String" />
+    <table >
+        <tr> 
+            <td>List Of Account</td>
+            <td style="width:7%">Search</td>
+            <td style="width:25%">
+                <!-- <ui:inputText aura:id="input1"   change="{!c.searchKeyChange}"   required="true"></ui:inputText> -->
+                <!-- <input aura:id="input1"   onchange="{!c.searchKeyChange}"   required="true" /> -->
+                <lightning:input type="text" name="searchKey_2" label="Enter Account Name" aura:id="input1" onchange="{!c.searchKeyChange}" placeholder="Search" />
+            </td>
+        </tr>
+    </table>
+    <table class="slds-table slds-table–bordered">
+
+        <thead>
+            <!-- <tr style="background-color:#6cbcd2;color:white;font-weight:bold">
+                <th>Name</th>
+            </tr> -->
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.paginationList}" var="item">
+                <tr style="background-color:#6cbcd2;color:rgb(0, 0, 0);font-weight:bold">
+                    <td>Account Name:- <ui:outputText value="{!item.Name}" /></td>
+                </tr>
+                <tr style="background-color:#cb59e8;color:rgb(0, 0, 0);font-weight:bold">
+                    <td>Contacts List</td>
+                </tr>
+                <tr>
+                    <table class="slds-table slds-table–bordered">
+                        <tr>
+                            <th>Name</th>
+                            <th>Phone No.</th>
+                            <th>Email</th>
+                        </tr>
+                        <aura:iteration items="{!item.Contacts}" var="con1" >
+                        <tr>
+                            <td>{!con1.Name}</td>
+                            <td>{!con1.phone}</td>
+                            <td>{!con1.Email}</td>
+
+                        </tr>
+                        </aura:iteration>
+                    </table>
+                </tr>
+            </aura:iteration>
+            </tbody>
+        </table>
+            
+            <lightning:button label="First" disabled="{!v.start == 0}"  onclick="{!c.first}" />
+            <lightning:button label="Previous" disabled="{!v.start == 0}"  onclick="{!c.previous}" />
+            {!v.c_page}/{!v.total_page}
+            <lightning:button label="Next" disabled="{!v.end >= v.totalSize}" onclick="{!c.next}" />
+            <lightning:button label="Last" disabled="{!v.end >= v.totalSize}" onclick="{!c.last}" />
+        
+    
+</aura:component>

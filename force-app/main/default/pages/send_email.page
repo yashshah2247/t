@@ -1,0 +1,5 @@
+<apex:page standardController="Contact" extensions="GmailApiNamedCredential" action="{!sendEmail}">
+<apex:form>
+
+</apex:form>
+</apex:page>

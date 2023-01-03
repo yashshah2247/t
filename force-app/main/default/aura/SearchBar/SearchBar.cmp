@@ -1,0 +1,9 @@
+<aura:component >
+    <lightning:card variant="Narrow" title="Search Name">
+        <div>
+            <input type="text" class="from-control" placeholder="search" onkeyup = "{!c.searchKeyChange}" />
+        </div>
+    </lightning:card>
+                    
+	
+</aura:component>

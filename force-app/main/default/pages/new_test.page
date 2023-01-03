@@ -1,0 +1,33 @@
+<apex:page standardController="Account" recordSetVar="records"> 
+    <apex:pageBlock title="Account List"> 
+        <apex:pageBlockTable value="{!records}" var="record"> 
+            <apex:column > 
+                <apex:facet name="header">Account Name</apex:facet> 
+                <apex:outputText value="{!record.Name}"/> 
+                <apex:pageBlockTable value="{!record.Contacts}" var="con" > 
+                    <apex:column > 
+                        <apex:facet name="header">First Name</apex:facet> 
+                        <apex:outputText value="{!con.firstname}"/> 
+                    </apex:column>
+                    <apex:column > 
+                        <apex:facet name="header">Last Name</apex:facet> 
+                        <apex:outputText value="{!con.lastname}"/> 
+                    </apex:column> 
+                    <apex:column > 
+                        <apex:facet name="header">Phone</apex:facet> 
+                        <apex:outputText value="{!con.phone}"/> 
+                    </apex:column>
+                </apex:pageBlockTable>
+            </apex:column> 
+            <apex:column > 
+                <apex:facet name="header">Account Number</apex:facet> 
+                <apex:outputText value="{!record.AccountNumber}"/> 
+            </apex:column> 
+            <apex:column > 
+                <apex:facet name="header">Account ID</apex:facet> 
+                <apex:outputText value="{!record.ID}"/> 
+            </apex:column>
+        </apex:pageBlockTable>
+     
+    </apex:pageBlock>
+</apex:page>

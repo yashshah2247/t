@@ -1,0 +1,142 @@
+<apex:page controller="RegisterPage">
+    <script type="text/javascript">
+        function doSearch() {
+            searchServer(document.getElementById("S_Acc").value,);
+        }
+        function validate() {
+            var f_namErr = namErr = phoneErr = emailErr = passErr = true;
+            var f_nam = document.getElementById('{!$Component.frm.pb.pbs.pbs1.f_nam}').value;
+            var nam = document.getElementById('{!$Component.frm.pb.pbs.pbs2.nam}').value;
+            var phone = document.getElementById('{!$Component.frm.pb.pbs.pbs3.phone}').value;
+            var email = document.getElementById('{!$Component.frm.pb.pbs.pbs4.email}').value;
+            var pass = document.getElementById('{!$Component.frm.pb.pbs.pbs5.pass}').value;
+            // alert(nam);
+            // if(document.getElementById('{!$Component.frm.pb.pbs.pbs1.nam}').value==''){
+            //     alert("Last name is Mandatory");
+            // }
+            if (f_nam == "") {
+                //   printError("nameErr", "Please enter your name");
+                alert("Please enter your Firstname");
+            } else {
+                var regex = /^[a-zA-Z\s]+$/;
+                if (regex.test(f_nam) === false) {
+                    //   printError("nameErr", "Please enter a valid name");
+                    alert("Please enter a valid Firstname");
+                } else {
+                    //   printError("nameErr", "");
+                    //   "Please enter a valid name"
+                    f_namErr = false;
+                }
+            }
+            if (nam == "") {
+                //   printError("nameErr", "Please enter your name");
+                alert("Please enter your Lastname");
+            } else {
+                var regex = /^[a-zA-Z\s]+$/;
+                if (regex.test(nam) === false) {
+                    //   printError("nameErr", "Please enter a valid name");
+                    alert("Please enter a valid Lastname");
+                } else {
+                    //   printError("nameErr", "");
+                    //   "Please enter a valid name"
+                    namErr = false;
+                }
+            }
+            if (phone == "") {
+                //   printError("nameErr", "Please enter your name");
+                alert("Please enter your Phone Nuber");
+            } else {
+                var regex = /^(\+\d{1,3}[- ]?)?\d{10}$/;
+                
+                if (regex.test(phone) === false) {
+                    //   printError("nameErr", "Please enter a valid name");
+                    alert("Please enter a valid 10 digit Phone Nuber");
+                } else {
+                    //   printError("nameErr", "");
+                    //   "Please enter a valid "
+                    phoneErr = false;
+                }
+            }
+            // Validate email address
+            if (email == "") {
+                // printError("emailErr", "Please enter your email address");
+                alert("Please enter your email address");
+            } else {
+                // Regular expression for basic email validation
+                var regex = /^\S+@\S+\.\S+$/;
+                if (regex.test(email) === false) {
+                    // printError("emailErr", "Please enter a valid email address");
+                    alert("Please enter a valid email address");
+                } else {
+                    // printError("emailErr", "");
+                    emailErr = false;
+                }
+            }
+
+            // Validate password number
+            if (pass == "") {
+                // printError("passwordErr", "Please enter your password ");
+                alert("Please enter your password");
+            } else {
+                var regex = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+                if (regex.test(pass) === false) {
+                    // printError("passwordErr", "Please enter a valid 10 digit password number");
+                    alert("Please enter a valid password ");
+                } else {
+                    // printError("passwordErr", "");
+                    passErr = false;
+                }
+            }
+
+            if ((f_namErr || namErr || phoneErr || emailErr || passErr) == true) {
+                return false;
+            } else {
+                // alert("Hiii");
+                callsubmt();
+                alert("contect has been created");
+            }
+
+        }
+    </script>
+    <apex:form id="frm">
+        <apex:actionFunction name="callsubmt" action="{!Sign}" rerender=",pb" />
+        <!-- <apex:param name="S_Acc" value="" /> -->
+        <!-- </apex:actionFunction> -->
+        <apex:pageBlock id="pb">
+            <apex:pageBlockSection id="pbs" columns="1">
+                <apex:pageBlockSectionItem id="pbs1">
+                    <apex:outputLabel value="First Name" />
+                    <apex:inputText value="{!f_name}" id="f_nam" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbs2">
+                    <apex:outputLabel value="Last Name" />
+                    <apex:inputText value="{!l_name}" id="nam" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbs3">
+                    <apex:outputLabel value="Phone Name" />
+                    <apex:inputText value="{!phone_n}" id="phone" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbs4">
+                    <apex:outputLabel value="Email Name" />
+                    <apex:inputText id="email" value="{!email}" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem id="pbs5">
+                    <apex:outputLabel value="Password" />
+                    <apex:inputText value="{!pass}" id="pass" />
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:outputLabel value="Select Account" />
+                    <apex:selectList size="1" value="{!acc}" id="S_Acc" onchange="doSearch();">
+                        <apex:selectOptions value="{!UserList}"></apex:selectOptions>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+                <apex:pageBlockSectionItem>
+                    <apex:commandButton onclick="validate();" value="Signup" />
+                    <br/>
+
+                </apex:pageBlockSectionItem>
+                <apex:outputLabel value="{!acc}" />
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,21 @@
+<template>
+    <div class="c-container">
+        <lightning-layout multiple-rows="true" >
+            <lightning-layout-item padding="around-small" size="12">
+                <lightning-layout horizontal-align={horizontalAlign}>
+                    <lightning-layout-item flexibility="auto" padding="around-small">
+                        <select class="slds-select" name = "optionSelect" onchange={changeHandler} >
+                            <option value="null">pls select</option>
+                            <option value="Account">Account</option>
+                            <option value="Lead">Lead</option>
+                            <option value="Opportunity">Opportunity</option>
+                            <option value="Contract">Contract</option>
+                            <option value="person">person</option>
+                        </select>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+    
+</template>

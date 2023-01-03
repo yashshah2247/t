@@ -1,0 +1,68 @@
+<apex:page controller="Dashboard_test" standardStylesheets="false" >
+    <apex:form >
+        <body>
+        <div align="center" draggable="false" >
+            <h1>Dashboard</h1>
+        </div>
+    </body>
+    <apex:pageBlock id="pb" title="Contact List"> 
+        <apex:pageBlockTable value="{!Contacts}" var="c" id="pt"> 
+            <apex:column > 
+                <apex:facet name="header">Contact Name</apex:facet> 
+                <apex:outputText value="{!c.Name}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">Email</apex:facet> 
+                <apex:outputText value="{!c.Email}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">Phone</apex:facet> 
+                <apex:outputText value="{!c.Phone}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">Birthdate</apex:facet> 
+                <apex:outputText value="{!c.Birthdate}"/> 
+            </apex:column> 
+        </apex:pageBlockTable>
+        <div align="center" draggable="false" >
+            <apex:commandButton value="First" action="{!fstbtn}" disabled="{!prv}" reRender="pt,pb" />
+            <apex:commandButton value="Previous" action="{!prvbtn}" disabled="{!prv}" reRender="pt,pb" />
+            <apex:outputText value="{!png}"/>
+            <apex:outputText value="/"/>
+            <apex:outputText value="{!countTotalRecords}"/>  
+            <apex:commandButton value="Next" action="{!nextbtn}" disabled="{!nxt}" reRender="pt,pb" />
+            <apex:commandButton value="End" action="{!endbtn}" disabled="{!nxt}" reRender="pt,pb" />
+        </div> 
+    </apex:pageBlock>
+    <apex:pageBlock id="pb_1" title="Opportunity List"> 
+        <apex:pageBlockTable value="{!Opportunity}" var="op" id="pt_1"> 
+            <apex:column > 
+                <apex:facet name="header">Opportunity Name</apex:facet> 
+                <apex:outputText value="{!op.Name}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">Amount</apex:facet> 
+                <apex:outputText value="{!op.Amount}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">CloseDate</apex:facet> 
+                <apex:outputText value="{!op.CloseDate}"/> 
+            </apex:column>
+            <apex:column > 
+                <apex:facet name="header">Contract Name</apex:facet> 
+                <apex:outputText value="{!op.ContractId}"/> 
+            </apex:column> 
+        </apex:pageBlockTable>
+        <div align="center" draggable="false" >
+            <apex:commandButton value="First" action="{!fstbtn_1}" disabled="{!prv_1}" reRender="pt_1,pb_1" />
+            <apex:commandButton value="Previous" action="{!prvbtn_1}" disabled="{!prv_1}" reRender="pt_1,pb_1" />
+            <apex:outputText value="{!png_1}"/>
+            <apex:outputText value="/"/>
+            <apex:outputText value="{!countTotalRecords_1}"/>  
+            <apex:commandButton value="Next" action="{!nextbtn_1}" disabled="{!nxt_1}" reRender="pt_1,pb_1" />
+            <apex:commandButton value="End" action="{!endbtn_1}" disabled="{!nxt_1}" reRender="pt_1,pb_1" /> 
+        </div>
+    </apex:pageBlock>
+</apex:form>
+
+</apex:page>

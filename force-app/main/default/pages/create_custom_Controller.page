@@ -1,0 +1,13 @@
+<apex:page controller="addContaController">
+<apex:form >
+    Firstt Name :<br/>
+    <apex:inputField value="{!con.FirstName}"/><br/>
+    Last Name :<br/>
+    <apex:inputField value="{!con.LastName}"/><br/>
+    Phone :<br/>
+    <apex:inputField value="{!con.Phone}"/><br/>
+    Email :<br/>
+    <apex:inputField value="{!con.Email}"/><br/>
+    <apex:commandButton action="{!saveContact}" value="Insert"/><br/>
+</apex:form>
+</apex:page>
